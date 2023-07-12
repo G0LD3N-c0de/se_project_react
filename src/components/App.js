@@ -2,6 +2,7 @@ import "../blocks/App.css";
 import Header from "./Header";
 import ItemCard from "./ItemCard";
 import Weather from "./Weather";
+import Footer from "./Footer";
 
 const defaultClothingItems = [
   {
@@ -54,6 +55,7 @@ function App() {
           })}
         </section>
       </main>
+      <Footer />
     </div>
   );
 }
