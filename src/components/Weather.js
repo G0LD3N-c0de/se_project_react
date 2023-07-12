@@ -63,7 +63,7 @@ const weatherOptions = [
   },
 ];
 
-function Weather({ type, day }) {
+function Weather({ type, day, weatherTemp }) {
   const imageSelector = weatherOptions.filter((i) => {
     return i.type === type && i.day === day;
   });
@@ -72,7 +72,7 @@ function Weather({ type, day }) {
 
   return (
     <section className="weather">
-      <div className="weather__info">75F</div>
+      <div className="weather__info">{weatherTemp}</div>
       <img src={imageUrl} alt="weather display" className="weather__image" />
     </section>
   );

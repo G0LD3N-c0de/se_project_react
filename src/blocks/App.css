@@ -2,11 +2,3 @@
   max-width: 1440px;
   margin: 0 auto;
 }
-
-.main__gallery {
-  margin: 0 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  justify-content: center;
-}
