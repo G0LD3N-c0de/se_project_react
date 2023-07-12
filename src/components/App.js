@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="page">
       <Header />
-      <main>
-        <Weather />
+      <main className="main">
+        <Weather type="snow" day={false} />
         <CardSection />
       </main>
     </div>
