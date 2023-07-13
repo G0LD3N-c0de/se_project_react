@@ -1,0 +1,32 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__content {
+  max-width: 500px;
+  width: 100%;
+  background-color: #fff;
+  padding: 28px 28px 36px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.modal__close {
+  background-image: url("../images/closeButton.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  right: 31px;
+  top: 23px;
+}
