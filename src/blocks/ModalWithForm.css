@@ -30,3 +30,32 @@
   right: 31px;
   top: 23px;
 }
+
+.modal__title {
+  margin-bottom: 24px;
+}
+
+.modal__submit {
+  margin-top: 34px;
+  background-color: #0000004d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px 8px 16px;
+}
+
+.modal__children {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__label {
+  margin-bottom: 5px;
+}
+
+.modal__input {
+  border: none;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #0000008d;
+  margin-bottom: 24px;
+}
