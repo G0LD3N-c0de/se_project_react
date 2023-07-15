@@ -4,10 +4,13 @@ import Footer from "./Footer";
 import Main from "./Main";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
+import weatherApi from "../utils/weatherApi";
 import { useState } from "react";
 
+weatherApi();
+
 function App() {
-  const weatherTemp = "75" + "° F";
+  const weatherTemp = "31";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
 

@@ -2,7 +2,7 @@ import "../blocks/ItemCard.css";
 
 function ItemCard({ i, onSelectCard }) {
   return (
-    <div className="card" key={i._id}>
+    <div className="card">
       <div className="card__title">{i.name}</div>
       <img
         src={i.link}

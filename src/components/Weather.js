@@ -72,7 +72,7 @@ function Weather({ type, day, weatherTemp }) {
 
   return (
     <section className="weather">
-      <div className="weather__info">{weatherTemp}</div>
+      <div className="weather__info">{weatherTemp}° F</div>
       <img src={imageUrl} alt="weather display" className="weather__image" />
     </section>
   );
