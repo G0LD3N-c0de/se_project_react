@@ -4,10 +4,8 @@ import Footer from "./Footer";
 import Main from "./Main";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
-import weatherApi from "../utils/weatherApi";
-import { useState } from "react";
-
-weatherApi();
+import { getForecastWeather } from "../utils/weatherApi";
+import { useState, useEffect } from "react";
 
 function App() {
   const weatherTemp = "31";
@@ -25,6 +23,12 @@ function App() {
   const handleCloseModal = () => {
     setActiveModal("");
   };
+
+  useEffect(() => {
+    getForecastWeather().then((res) => {
+      console.log(res);
+    });
+  }, []);
 
   return (
     <div className="page">
