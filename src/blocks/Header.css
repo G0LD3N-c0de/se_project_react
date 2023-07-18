@@ -12,6 +12,11 @@
   gap: 20px;
 }
 
+.header__location {
+  font-family: "Cabinet Grotesk Medium";
+  font-size: 20px;
+}
+
 .header__right {
   display: flex;
   align-items: center;
@@ -21,4 +26,15 @@
 .header__add-button {
   border: none;
   background-color: #fff;
+  font-family: "Cabinet Grotesk Medium";
+  font-size: 20px;
+}
+
+.header__add-button:hover {
+  cursor: pointer;
+}
+
+.header__username {
+  font-family: "Cabinet Grotesk Medium";
+  font-size: 20px;
 }

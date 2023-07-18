@@ -4,6 +4,8 @@
 
 .cards__weather-info {
   margin-bottom: 34px;
+  font-family: "Cabinet Grotesk Medium";
+  font-size: 20px;
 }
 
 .cards__wrapper {

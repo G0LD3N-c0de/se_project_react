@@ -15,6 +15,9 @@
   background-color: #fff;
   padding: 2px 12px;
   border-radius: 4px;
+  font-family: "Cabinet Grotesk Regular";
+  font-size: 16px;
+  color: #00000099;
 }
 
 .card__image {

@@ -3,3 +3,13 @@
   justify-content: space-between;
   margin: 85px 40px 24px;
 }
+
+.footer__info {
+  font-family: "Cabinet Grotesk Regular";
+  font-size: 16px;
+}
+
+.footer__date {
+  font-family: "Cabinet Grotesk Regular";
+  font-size: 16px;
+}
