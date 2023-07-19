@@ -1,0 +1,20 @@
+.item-modal__image {
+  width: 100%;
+}
+
+.modal__preview-content {
+  padding: 0;
+  overflow: hidden;
+}
+
+.item-modal__title {
+  margin: 20px 0 12px 32px;
+}
+
+.item-modal__weather {
+  margin: 0 0 32px 32px;
+}
+
+.modal__item-close {
+  background-image: url("../images/item-modal-close.svg");
+}

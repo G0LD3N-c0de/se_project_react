@@ -9,15 +9,20 @@
   border: 1px solid #0000004d;
 }
 
-.card__title {
+.card__header {
   position: absolute;
   top: 15px;
+  display: flex;
+}
+
+.card__title {
   background-color: #fff;
   padding: 2px 12px;
   border-radius: 4px;
   font-family: "Cabinet Grotesk Regular";
   font-size: 16px;
   color: #00000099;
+  margin-right: 9px;
 }
 
 .card__image {
