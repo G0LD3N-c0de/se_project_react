@@ -27,13 +27,30 @@ function App() {
     setActiveModal("preview");
   };
 
+  const getTimeOfDay = (data) => {
+    const time = Math.ceil(Date.now() / 1000);
+    if (time > data.sys.sunrise) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const handleCloseModal = () => {
     setActiveModal("");
   };
 
   const getImageURL = (data) => {
+    const time = Math.ceil(Date.now() / 1000);
+    let isDay;
+    if (time >= data.sys.sunrise && time <= data.sys.sunset) {
+      isDay = true;
+    } else {
+      isDay = false;
+    }
+
     const imageSelector = weatherOptions.filter((i) => {
-      return i.type === data.weather[0].main && i.day === true;
+      return i.type === data.weather[0].main && i.day === isDay;
     });
     const imageUrl = imageSelector[0].url;
     return imageUrl;
