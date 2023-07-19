@@ -10,17 +10,27 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  margin-right: 10px;
+  transition: 0.5s;
+}
+
+.header__logo {
+  max-width: 88px;
+  max-height: 24px;
+  transition: 0.5s;
 }
 
 .header__location {
   font-family: "Cabinet Grotesk Medium";
   font-size: 20px;
+  transition: 0.5s;
 }
 
 .header__right {
   display: flex;
   align-items: center;
   gap: 20px;
+  transition: 0.5s;
 }
 
 .header__add-button {
@@ -28,6 +38,7 @@
   background-color: #fff;
   font-family: "Cabinet Grotesk Medium";
   font-size: 20px;
+  transition: 0.5s;
 }
 
 .header__add-button:hover {
@@ -37,4 +48,50 @@
 .header__username {
   font-family: "Cabinet Grotesk Medium";
   font-size: 20px;
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 590px) {
+  .header__left {
+    gap: 10px;
+  }
+
+  .header__right {
+    gap: 10px;
+  }
+
+  .header__logo {
+    max-width: 60px;
+    max-height: 20px;
+  }
+
+  .header__location {
+    font-size: 16px;
+  }
+
+  .header__add-button {
+    font-size: 16px;
+  }
+
+  .header__username {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .header__location {
+    font-size: 14px;
+  }
+
+  .header__add-button {
+    font-size: 14px;
+  }
+
+  .header__username {
+    font-size: 14px;
+  }
+
+  .header__profile-picture {
+    display: none;
+  }
 }

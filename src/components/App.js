@@ -17,27 +17,38 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [city, setCity] = useState("");
-  const [weatherCondition, setWeatherCondition] = useState("");
+  const [weatherCondition, setWeatherCondition] = useState(
+    require("../images/weather/day/sunny.svg").default
+  );
 
   const handleCreateModal = () => {
     setActiveModal("create");
+    document.addEventListener("keydown", handleEscClose);
+    document.addEventListener("click", handleRemoteClose);
   };
   const handleselectedCard = (card) => {
     setSelectedCard(card);
     setActiveModal("preview");
-  };
-
-  const getTimeOfDay = (data) => {
-    const time = Math.ceil(Date.now() / 1000);
-    if (time > data.sys.sunrise) {
-      return true;
-    } else {
-      return false;
-    }
+    document.addEventListener("keydown", handleEscClose);
+    document.addEventListener("click", handleRemoteClose);
   };
 
   const handleCloseModal = () => {
     setActiveModal("");
+    document.removeEventListener("keydown", handleEscClose);
+    document.removeEventListener("click", handleRemoteClose);
+  };
+
+  const handleEscClose = (evt) => {
+    if (evt.key === "Escape") {
+      handleCloseModal();
+    }
+  };
+
+  const handleRemoteClose = (evt) => {
+    if (evt.target.classList.contains("modal")) {
+      handleCloseModal();
+    }
   };
 
   const getImageURL = (data) => {
@@ -79,6 +90,7 @@ function App() {
       {activeModal === "create" && (
         <ModalWithForm
           title={"New Garment"}
+          name={"create"}
           buttonText={"Add Garment"}
           onClose={handleCloseModal}
         >

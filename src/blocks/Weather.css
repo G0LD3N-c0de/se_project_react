@@ -10,9 +10,32 @@
   color: #fff;
   font-size: 36px;
   font-family: "Cabinet Grotesk Bold";
+  transition: 0.5s ease-in;
 }
 
 .weather__image {
   max-width: 100%;
   min-height: 80px;
+  transition: 0.5s ease-in;
+}
+
+@media screen and (max-width: 700px) {
+  .weather__info {
+    font-size: 24px;
+  }
+
+  .weather__image {
+    min-height: 60px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .weather__info {
+    font-size: 16px;
+    top: 12px;
+  }
+
+  .weather__image {
+    min-height: 40px;
+  }
 }

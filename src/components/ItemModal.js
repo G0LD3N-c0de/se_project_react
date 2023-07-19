@@ -11,7 +11,9 @@ function ItemModal({ selectedCard, onClose }) {
         />
         <img className="item-modal__image" src={selectedCard.link} />
         <div className="item-modal__title">{selectedCard.name}</div>
-        <div className="item-modal__weather">{selectedCard.weather}</div>
+        <div className="item-modal__weather">
+          Weather: {selectedCard.weather}
+        </div>
       </div>
     </div>
   );

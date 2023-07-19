@@ -8,7 +8,11 @@ function Header({ onCreateModal, cityName }) {
   return (
     <header className="header">
       <div className="header__left">
-        <img src={require("../images/wtwr.svg").default} alt="logo" />
+        <img
+          src={require("../images/wtwr.svg").default}
+          alt="logo"
+          className="header__logo"
+        />
         <div className="header__location">
           {currentDate}, {cityName}
         </div>
@@ -22,7 +26,11 @@ function Header({ onCreateModal, cityName }) {
           + Add Clothes
         </button>
         <div className="header__username">Name</div>
-        <img src={require("../images/avatar.svg").default} alt="profile" />
+        <img
+          src={require("../images/avatar.svg").default}
+          alt="profile"
+          className="header__profile-picture"
+        />
       </div>
     </header>
   );

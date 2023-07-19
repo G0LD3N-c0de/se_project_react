@@ -1,5 +1,5 @@
 .card {
-  height: 328px;
+  max-height: 328px;
   width: 324px;
   position: relative;
   border-radius: 20px;
