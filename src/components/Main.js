@@ -4,7 +4,7 @@ import "../blocks/Main.css";
 import { defaultClothingItems } from "../utils/constants";
 import { useMemo } from "react";
 
-function Main({ weatherTemp, onSelectCard }) {
+function Main({ weatherTemp, onSelectCard, weatherCondition }) {
   const weatherType = useMemo(() => {
     if (weatherTemp >= 86) {
       return "hot";
@@ -21,7 +21,7 @@ function Main({ weatherTemp, onSelectCard }) {
 
   return (
     <main className="main">
-      <Weather type="snow" day={true} weatherTemp={weatherTemp} />
+      <Weather weatherCondition={weatherCondition} weatherTemp={weatherTemp} />
       <section className="cards">
         <div className="cards__weather-info">
           Today is {weatherTemp}° F / You may want to wear:

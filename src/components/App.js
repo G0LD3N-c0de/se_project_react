@@ -9,6 +9,7 @@ import {
   getTemperature,
   getCityName,
 } from "../utils/weatherAPI";
+import { weatherOptions } from "../utils/constants";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [city, setCity] = useState("");
+  const [weatherCondition, setWeatherCondition] = useState("");
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -29,19 +31,33 @@ function App() {
     setActiveModal("");
   };
 
+  const getImageURL = (data) => {
+    const imageSelector = weatherOptions.filter((i) => {
+      return i.type === data.weather[0].main && i.day === true;
+    });
+    const imageUrl = imageSelector[0].url;
+    return imageUrl;
+  };
+
   useEffect(() => {
     getForecastWeather().then((res) => {
       const temperature = getTemperature(res);
       const cityName = getCityName(res);
+      const imageUrl = getImageURL(res);
       setTemp(temperature);
       setCity(cityName);
+      setWeatherCondition(imageUrl);
     });
   }, []);
 
   return (
     <div className="page">
       <Header onCreateModal={handleCreateModal} cityName={city} />
-      <Main weatherTemp={temp} onSelectCard={handleselectedCard} />
+      <Main
+        weatherTemp={temp}
+        onSelectCard={handleselectedCard}
+        weatherCondition={weatherCondition}
+      />
       <Footer />
       {activeModal === "create" && (
         <ModalWithForm
