@@ -1,4 +1,6 @@
 import "../blocks/Header.css";
+import logo from "../images/wtwr.svg";
+import avatar from "../images/avatar.svg";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
@@ -8,11 +10,7 @@ function Header({ onCreateModal, cityName }) {
   return (
     <header className="header">
       <div className="header__left">
-        <img
-          src={require("../images/wtwr.svg").default}
-          alt="logo"
-          className="header__logo"
-        />
+        <img src={logo} alt="logo" className="header__logo" />
         <div className="header__location">
           {currentDate}, {cityName}
         </div>
@@ -26,11 +24,7 @@ function Header({ onCreateModal, cityName }) {
           + Add Clothes
         </button>
         <div className="header__username">Name</div>
-        <img
-          src={require("../images/avatar.svg").default}
-          alt="profile"
-          className="header__profile-picture"
-        />
+        <img src={avatar} alt="profile" className="header__profile-picture" />
       </div>
     </header>
   );

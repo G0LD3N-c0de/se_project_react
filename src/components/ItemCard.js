@@ -1,14 +1,12 @@
 import "../blocks/ItemCard.css";
+import heart from "../images/heart.svg";
 
 function ItemCard({ i, onSelectCard }) {
   return (
     <div className="card">
       <div className="card__header">
         <div className="card__title">{i.name}</div>
-        <img
-          className="card__heart"
-          src={require("../images/heart.svg").default}
-        />
+        <img className="card__heart" src={heart} />
       </div>
       <img
         src={i.link}

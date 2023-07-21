@@ -8,7 +8,7 @@ import {
   getForecastWeather,
   getTemperature,
   getCityName,
-} from "../utils/weatherAPI";
+} from "../utils/weatherApi";
 import { weatherOptions } from "../utils/constants";
 import { useState, useEffect } from "react";
 
