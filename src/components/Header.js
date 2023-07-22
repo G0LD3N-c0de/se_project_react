@@ -24,7 +24,11 @@ function Header({ onCreateModal, cityName }) {
           + Add Clothes
         </button>
         <div className="header__username">Name</div>
-        <img src={avatar} alt="profile" className="header__profile-picture" />
+        <img
+          src={avatar}
+          alt="profile picture"
+          className="header__profile-picture"
+        />
       </div>
     </header>
   );

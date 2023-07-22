@@ -9,8 +9,12 @@ function ItemModal({ selectedCard, onClose }) {
           onClick={onClose}
           className="modal__close modal__item-close"
         />
-        <img className="item-modal__image" src={selectedCard.link} />
-        <div className="item-modal__title">{selectedCard.name}</div>
+        <img
+          className="item-modal__image"
+          src={selectedCard.link}
+          alt={selectedCard.name}
+        />
+        <p className="item-modal__title">{selectedCard.name}</p>
         <div className="item-modal__weather">
           Weather: {selectedCard.weather}
         </div>

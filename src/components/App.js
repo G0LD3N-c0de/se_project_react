@@ -17,38 +17,18 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [city, setCity] = useState("");
-  const [weatherCondition, setWeatherCondition] = useState(
-    require("../images/weather/day/sunny.svg").default
-  );
+  const [weatherCondition, setWeatherCondition] = useState("");
 
   const handleCreateModal = () => {
     setActiveModal("create");
-    document.addEventListener("keydown", handleEscClose);
-    document.addEventListener("click", handleRemoteClose);
   };
   const handleselectedCard = (card) => {
     setSelectedCard(card);
     setActiveModal("preview");
-    document.addEventListener("keydown", handleEscClose);
-    document.addEventListener("click", handleRemoteClose);
   };
 
   const handleCloseModal = () => {
     setActiveModal("");
-    document.removeEventListener("keydown", handleEscClose);
-    document.removeEventListener("click", handleRemoteClose);
-  };
-
-  const handleEscClose = (evt) => {
-    if (evt.key === "Escape") {
-      handleCloseModal();
-    }
-  };
-
-  const handleRemoteClose = (evt) => {
-    if (evt.target.classList.contains("modal")) {
-      handleCloseModal();
-    }
   };
 
   const getImageURL = (data) => {
@@ -60,23 +40,53 @@ function App() {
       isDay = false;
     }
 
-    const imageSelector = weatherOptions.filter((i) => {
-      return i.type === data.weather[0].main && i.day === isDay;
+    const imageSelector = weatherOptions.filter((option) => {
+      return option.type === data.weather[0].main && option.day === isDay;
     });
     const imageUrl = imageSelector[0].url;
     return imageUrl;
   };
 
+  // ----- BEGIN USE EFFECTS ----- //
+
+  // Get weather info and render appropriate data
   useEffect(() => {
-    getForecastWeather().then((res) => {
-      const temperature = getTemperature(res);
-      const cityName = getCityName(res);
-      const imageUrl = getImageURL(res);
-      setTemp(temperature);
-      setCity(cityName);
-      setWeatherCondition(imageUrl);
-    });
+    getForecastWeather()
+      .then((res) => {
+        const temperature = getTemperature(res);
+        const cityName = getCityName(res);
+        const imageUrl = getImageURL(res);
+        setTemp(temperature);
+        setCity(cityName);
+        setWeatherCondition(imageUrl);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
+
+  // Apply remote close and esc close to modals
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+    const handleRemoteClose = (evt) => {
+      if (evt.target.classList.contains("modal")) {
+        handleCloseModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+    document.addEventListener("click", handleRemoteClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+      document.removeEventListener("click", handleRemoteClose);
+    };
+  }, [activeModal]);
+
+  // ----- END USE EFFECTS ----- //
 
   return (
     <div className="page">
@@ -94,7 +104,7 @@ function App() {
           buttonText={"Add Garment"}
           onClose={handleCloseModal}
         >
-          <label className="modal__label" name="name" for="name">
+          <label className="modal__label" name="name" htmlFor="name">
             Name
           </label>
           <input
@@ -107,7 +117,7 @@ function App() {
             className="modal__input"
             required
           />
-          <label className="modal__label" for="link">
+          <label className="modal__label" htmlFor="link">
             Image
           </label>
           <input
@@ -131,7 +141,7 @@ function App() {
                 id="Hot"
                 required
               ></input>
-              <label for="Hot" className="modal__radio-label">
+              <label htmlFor="Hot" className="modal__radio-label">
                 Hot
               </label>
             </div>
@@ -144,7 +154,7 @@ function App() {
                 id="Warm"
                 required
               ></input>
-              <label for="Warm" className="modal__radio-label">
+              <label htmlFor="Warm" className="modal__radio-label">
                 Warm
               </label>
             </div>
@@ -157,7 +167,7 @@ function App() {
                 id="Cold"
                 required
               ></input>
-              <label for="Cold" className="modal__radio-label">
+              <label htmlFor="Cold" className="modal__radio-label">
                 Cold
               </label>
             </div>

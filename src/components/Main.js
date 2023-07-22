@@ -27,8 +27,8 @@ function Main({ weatherTemp, onSelectCard, weatherCondition }) {
           Today is {weatherTemp}° F / You may want to wear:
         </div>
         <div className="cards__wrapper">
-          {filteredCards.map((i) => {
-            return <ItemCard i={i} onSelectCard={onSelectCard} />;
+          {filteredCards.map((card, i) => {
+            return <ItemCard card={card} key={i} onSelectCard={onSelectCard} />;
           })}
         </div>
       </section>
