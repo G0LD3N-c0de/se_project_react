@@ -1,9 +1,9 @@
 import "../blocks/ItemCard.css";
 import heart from "../images/heart.svg";
 
-function ItemCard({ card, cardId, onSelectCard }) {
+function ItemCard({ card, onSelectCard }) {
   return (
-    <div className="card" key={cardId}>
+    <div className="card">
       <div className="card__header">
         <p className="card__title">{card.name}</p>
         <img className="card__heart" src={heart} alt="like button" />
