@@ -19,6 +19,10 @@ function App() {
   const [city, setCity] = useState("");
   const [weatherCondition, setWeatherCondition] = useState("");
 
+  // ----- Toggle Switch ----- //
+
+  // ----- End Toggle Switch ----- //
+
   const handleCreateModal = () => {
     setActiveModal("create");
   };

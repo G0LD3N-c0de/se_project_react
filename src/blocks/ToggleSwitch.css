@@ -1,0 +1,47 @@
+.switch {
+  display: flex;
+  position: relative;
+}
+
+.switch__checkbox {
+  width: 60px;
+  height: 30px;
+  appearance: none;
+  border: 2px solid #7e7e7e;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.switch__button {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #000;
+  left: 0;
+  transition: left 0.3s ease-in-out;
+}
+
+.switch__button_C {
+  left: 30px;
+}
+
+.switch__temp-unit-F {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  color: #000;
+  transition: color 0.3s ease-in-out;
+}
+
+.switch__temp-unit-C {
+  position: absolute;
+  top: 5px;
+  left: 40px;
+  color: #000;
+  transition: color 0.3s ease-in-out;
+}
+
+.switch__temp-unit_active {
+  color: #fff;
+}
