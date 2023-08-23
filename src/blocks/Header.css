@@ -39,6 +39,7 @@
   font-family: "Cabinet Grotesk Medium";
   font-size: 20px;
   transition: 0.5s;
+  padding: 0;
 }
 
 .header__add-button:hover {
@@ -49,6 +50,8 @@
   font-family: "Cabinet Grotesk Medium";
   font-size: 20px;
   transition: 0.5s;
+  text-decoration: none;
+  color: #000;
 }
 
 @media screen and (max-width: 590px) {

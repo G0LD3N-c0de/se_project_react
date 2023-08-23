@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Main from "./Main";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
+import Profile from "./Profile";
 import {
   getForecastWeather,
   getTemperature,
@@ -12,6 +13,7 @@ import {
 import { weatherOptions } from "../utils/constants";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import { useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -74,7 +76,7 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
-  }, [currentTemperatureUnit]);
+  }, []);
 
   // Apply remote close and esc close to modals
   useEffect(() => {
@@ -105,11 +107,19 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <Header onCreateModal={handleCreateModal} cityName={city} />
-        <Main
-          weatherTemp={temp[currentTemperatureUnit]}
-          onSelectCard={handleselectedCard}
-          weatherCondition={weatherCondition}
-        />
+
+        <Switch>
+          <Route exact path="/profile">
+            <Profile onSelectCard={handleselectedCard} />
+          </Route>
+          <Route path="/">
+            <Main
+              weatherTemp={temp[currentTemperatureUnit]}
+              onSelectCard={handleselectedCard}
+              weatherCondition={weatherCondition}
+            />
+          </Route>
+        </Switch>
         <Footer />
         {activeModal === "create" && (
           <ModalWithForm
