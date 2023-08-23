@@ -74,7 +74,7 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [currentTemperatureUnit]);
 
   // Apply remote close and esc close to modals
   useEffect(() => {
@@ -106,7 +106,7 @@ function App() {
       >
         <Header onCreateModal={handleCreateModal} cityName={city} />
         <Main
-          weatherTemp={temp}
+          weatherTemp={temp[currentTemperatureUnit]}
           onSelectCard={handleselectedCard}
           weatherCondition={weatherCondition}
         />
