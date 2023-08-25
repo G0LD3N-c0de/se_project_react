@@ -1,6 +1,6 @@
 import "../blocks/ItemModal.css";
 
-function ItemModal({ selectedCard, onClose }) {
+function ItemModal({ selectedCard, onClose, handleDeleteItem }) {
   return (
     <div className="modal">
       <div className="modal__content modal__preview-content">
@@ -14,9 +14,22 @@ function ItemModal({ selectedCard, onClose }) {
           src={selectedCard.link}
           alt={selectedCard.name}
         />
-        <p className="item-modal__title">{selectedCard.name}</p>
-        <div className="item-modal__weather">
-          Weather: {selectedCard.weather}
+        <div className="item-modal__description">
+          <div className="item-modal__description-left">
+            <p className="item-modal__title">{selectedCard.name}</p>
+            <div className="item-modal__weather">
+              Weather: {selectedCard.weather}
+            </div>
+          </div>
+          <div className="item-modal__description-right">
+            <button
+              onClick={handleDeleteItem}
+              type="button"
+              className="item-modal__delete-item"
+            >
+              Delete item
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -24,3 +37,5 @@ function ItemModal({ selectedCard, onClose }) {
 }
 
 export default ItemModal;
+
+// onClick on delete-item, remove selected card from

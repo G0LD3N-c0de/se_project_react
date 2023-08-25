@@ -2,7 +2,7 @@ import avatar from "../images/avatar.svg";
 import "../blocks/Profile.css";
 import ItemCard from "./ItemCard";
 
-function Profile({ onSelectCard, clothingItems }) {
+function Profile({ onSelectCard, clothingItems, handleCreateModal }) {
   return (
     <section className="profile">
       <div className="profile__info">
@@ -12,7 +12,9 @@ function Profile({ onSelectCard, clothingItems }) {
       <div className="profile__items">
         <div className="profile__items-header">
           <p className="profile__items-title">Your items</p>
-          <button className="profile__items-button">+ Add new</button>
+          <button onClick={handleCreateModal} className="profile__items-button">
+            + Add new
+          </button>
         </div>
         <div className="profile__clothing">
           {clothingItems.map((card) => {

@@ -8,13 +8,26 @@
 }
 
 .item-modal__title {
-  margin: 20px 0 12px 32px;
-}
-
-.item-modal__weather {
-  margin: 0 0 32px 32px;
+  margin-bottom: 12px;
 }
 
 .modal__item-close {
   background-image: url("../images/item-modal-close.svg");
+}
+
+.item-modal__description {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 32px 32px 32px;
+}
+
+.item-modal__delete-item {
+  border: none;
+  background: none;
+  padding: 0;
+  color: red;
+}
+
+.item-modal__delete-item:hover {
+  cursor: pointer;
 }

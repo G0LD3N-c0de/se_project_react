@@ -2,6 +2,7 @@ import "../blocks/App.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
+import AddItemModal from "./AddItemModal";
 import ItemModal from "./ItemModal";
 import Profile from "./Profile";
 import {
@@ -13,7 +14,6 @@ import { defaultClothingItems, weatherOptions } from "../utils/constants";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import AddItemModal from "./AddItemModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -31,11 +31,16 @@ function App() {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
   };
 
-  // ----- End Toggle Switch ----- //
-
-  // ----- Add Item Modal ----- //
+  // -----  Item Handling ----- //
   const onAddItem = (item) => {
     setClothingItems([item, ...clothingItems]);
+  };
+
+  const handleDeleteItem = () => {
+    const updatedItems = clothingItems.filter((item) => item !== selectedCard);
+    setClothingItems(updatedItems);
+    setSelectedCard({});
+    handleCloseModal();
   };
 
   const handleCreateModal = () => {
@@ -119,6 +124,7 @@ function App() {
             <Profile
               onSelectCard={handleselectedCard}
               clothingItems={clothingItems}
+              handleCreateModal={handleCreateModal}
             />
           </Route>
           <Route path="/">
@@ -135,7 +141,11 @@ function App() {
           <AddItemModal handleClose={handleCloseModal} onAddItem={onAddItem} />
         )}
         {activeModal === "preview" && (
-          <ItemModal onClose={handleCloseModal} selectedCard={selectedCard} />
+          <ItemModal
+            onClose={handleCloseModal}
+            selectedCard={selectedCard}
+            handleDeleteItem={handleDeleteItem}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>

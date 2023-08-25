@@ -25,6 +25,10 @@
   background: none;
 }
 
+.profile__items-button:hover {
+  cursor: pointer;
+}
+
 .profile__clothing {
   display: flex;
   flex-wrap: wrap;
