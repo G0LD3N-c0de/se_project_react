@@ -10,6 +10,12 @@
   border: 2px solid #7e7e7e;
   border-radius: 20px;
   box-sizing: border-box;
+  transition: 0.2s;
+}
+
+.switch__checkbox:hover {
+  cursor: pointer;
+  border-color: #000;
 }
 
 .switch__button {
@@ -22,24 +28,40 @@
   transition: left 0.3s ease-in-out;
 }
 
+.switch__button:hover {
+  cursor: pointer;
+}
+
 .switch__button_C {
   left: 30px;
 }
 
 .switch__temp-unit-F {
   position: absolute;
-  top: 5px;
-  left: 10px;
+  top: 7px;
+  left: 11px;
   color: #000;
   transition: color 0.3s ease-in-out;
+  font-family: "Cabinet Grotesk Regular", sans-serif;
+  font-size: 14px;
+}
+
+.switch__temp-unit-F:hover {
+  cursor: pointer;
 }
 
 .switch__temp-unit-C {
   position: absolute;
-  top: 5px;
-  left: 40px;
+  top: 7px;
+  left: 41px;
   color: #000;
   transition: color 0.3s ease-in-out;
+  font-family: "Cabinet Grotesk Regular", sans-serif;
+  font-size: 14px;
+}
+
+.switch__temp-unit-C:hover {
+  cursor: pointer;
 }
 
 .switch__temp-unit_active {

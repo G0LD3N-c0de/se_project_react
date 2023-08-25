@@ -9,7 +9,7 @@ function ItemCard({ card, cardId, onSelectCard }) {
         <img className="card__heart" src={heart} alt="like button" />
       </div>
       <img
-        src={card.link}
+        src={card.imageUrl}
         alt={card.name}
         className="card__image"
         onClick={() => {

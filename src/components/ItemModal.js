@@ -11,7 +11,7 @@ function ItemModal({ selectedCard, onClose, handleDeleteItem }) {
         />
         <img
           className="item-modal__image"
-          src={selectedCard.link}
+          src={selectedCard.imageUrl}
           alt={selectedCard.name}
         />
         <div className="item-modal__description">

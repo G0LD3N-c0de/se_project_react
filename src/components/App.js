@@ -10,11 +10,15 @@ import {
   getTemperature,
   getCityName,
 } from "../utils/weatherApi";
-import { defaultClothingItems, weatherOptions } from "../utils/constants";
+import { weatherOptions } from "../utils/constants";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import { getClothingItems } from "../utils/Api";
+import {
+  getClothingItems,
+  addClothingItem,
+  deleteClothingItem,
+} from "../utils/Api";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -23,7 +27,7 @@ function App() {
   const [city, setCity] = useState("");
   const [weatherCondition, setWeatherCondition] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
 
   // ----- Toggle Switch ----- //
 
@@ -33,15 +37,23 @@ function App() {
   };
 
   // -----  Item Handling ----- //
+
   const onAddItem = (item) => {
-    setClothingItems([item, ...clothingItems]);
+    addClothingItem(item).then((res) => {
+      setClothingItems([...clothingItems, res]);
+      handleCloseModal();
+    });
   };
 
   const handleDeleteItem = () => {
-    const updatedItems = clothingItems.filter((item) => item !== selectedCard);
-    setClothingItems(updatedItems);
-    setSelectedCard({});
-    handleCloseModal();
+    deleteClothingItem(selectedCard._id).then(() => {
+      const updatedItems = clothingItems.filter(
+        (item) => item._id !== selectedCard._id
+      );
+      setClothingItems(updatedItems);
+      setSelectedCard({});
+      handleCloseModal();
+    });
   };
 
   const handleCreateModal = () => {
@@ -73,6 +85,13 @@ function App() {
   };
 
   // ----- BEGIN USE EFFECTS ----- //
+
+  // Retrieve clothing items
+  useEffect(() => {
+    getClothingItems().then((res) => {
+      setClothingItems(res);
+    });
+  }, []);
 
   // Get weather info and render appropriate data
   useEffect(() => {

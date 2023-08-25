@@ -1,6 +1,6 @@
 .card {
   max-height: 328px;
-  width: 324px;
+  width: 322px;
   position: relative;
   border-radius: 20px;
   overflow: hidden;
@@ -25,7 +25,7 @@
   margin-right: 9px;
 }
 
-.card__image {
+.card__heart .card__image {
   max-width: 100%;
   max-height: 100%;
 }
