@@ -1,4 +1,5 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  "https://my-json-server.typicode.com/G0LD3N-c0de/se_project_react";
 
 export function getClothingItems() {
   return fetch(`${baseUrl}/items`).then((res) => {
