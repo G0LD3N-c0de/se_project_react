@@ -14,6 +14,7 @@ import { defaultClothingItems, weatherOptions } from "../utils/constants";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
+import { getClothingItems } from "../utils/Api";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
