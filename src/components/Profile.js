@@ -1,9 +1,8 @@
 import avatar from "../images/avatar.svg";
 import "../blocks/Profile.css";
 import ItemCard from "./ItemCard";
-import { defaultClothingItems } from "../utils/constants";
 
-function Profile({ onSelectCard }) {
+function Profile({ onSelectCard, clothingItems }) {
   return (
     <section className="profile">
       <div className="profile__info">
@@ -16,7 +15,7 @@ function Profile({ onSelectCard }) {
           <button className="profile__items-button">+ Add new</button>
         </div>
         <div className="profile__clothing">
-          {defaultClothingItems.map((card) => {
+          {clothingItems.map((card) => {
             return (
               <ItemCard
                 card={card}
