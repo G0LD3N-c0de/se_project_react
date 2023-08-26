@@ -1,21 +1,11 @@
-import avatar from "../images/avatar.svg";
 import "../blocks/Profile.css";
-import ItemCard from "./ItemCard";
+import Sidebar from "./Sidebar";
+import ClothesSection from "./ClothesSection";
 
 function Profile({ onSelectCard, clothingItems, handleCreateModal }) {
-  const recentClothingItems = [...clothingItems].reverse();
   return (
     <section className="profile">
-      <div className="profile__info">
-        <div className="profile__info-container">
-          <img
-            src={avatar}
-            alt="profile image"
-            className="profile__avatar"
-          ></img>
-          <p className="profile__username">Julian Blanca</p>
-        </div>
-      </div>
+      <Sidebar />
       <div className="profile__items">
         <div className="profile__items-header">
           <p className="profile__items-title">Your items</p>
@@ -23,17 +13,10 @@ function Profile({ onSelectCard, clothingItems, handleCreateModal }) {
             + Add new
           </button>
         </div>
-        <div className="profile__clothing">
-          {recentClothingItems.map((card) => {
-            return (
-              <ItemCard
-                card={card}
-                key={card._id}
-                onSelectCard={onSelectCard}
-              />
-            );
-          })}
-        </div>
+        <ClothesSection
+          onSelectCard={onSelectCard}
+          clothingItems={clothingItems}
+        />
       </div>
     </section>
   );

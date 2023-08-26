@@ -39,21 +39,29 @@ function App() {
   // -----  Item Handling ----- //
 
   const onAddItem = (item) => {
-    addClothingItem(item).then((res) => {
-      setClothingItems([...clothingItems, res]);
-      handleCloseModal();
-    });
+    addClothingItem(item)
+      .then((res) => {
+        setClothingItems([...clothingItems, res]);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const handleDeleteItem = () => {
-    deleteClothingItem(selectedCard._id).then(() => {
-      const updatedItems = clothingItems.filter(
-        (item) => item._id !== selectedCard._id
-      );
-      setClothingItems(updatedItems);
-      setSelectedCard({});
-      handleCloseModal();
-    });
+    deleteClothingItem(selectedCard._id)
+      .then(() => {
+        const updatedItems = clothingItems.filter(
+          (item) => item._id !== selectedCard._id
+        );
+        setClothingItems(updatedItems);
+        setSelectedCard({});
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const handleCreateModal = () => {
@@ -88,9 +96,13 @@ function App() {
 
   // Retrieve clothing items
   useEffect(() => {
-    getClothingItems().then((res) => {
-      setClothingItems(res);
-    });
+    getClothingItems()
+      .then((res) => {
+        setClothingItems(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   // Get weather info and render appropriate data

@@ -3,29 +3,6 @@
   margin: 0 40px;
 }
 
-.profile__info {
-  display: flex;
-  align-items: flex-start;
-  margin-right: 116px;
-  min-width: 230px;
-}
-
-.profile__info-container {
-  display: flex;
-  align-items: center;
-  column-gap: 16px;
-}
-
-.profile__avatar {
-  height: 56px;
-  width: 56px;
-}
-
-.profile__username {
-  font-family: "Cabinet Grotesk Regular", sans-serif;
-  font-size: 20px;
-}
-
 .profile__items-header {
   display: flex;
   column-gap: 20px;
@@ -49,10 +26,4 @@
 
 .profile__items-button:hover {
   cursor: pointer;
-}
-
-.profile__clothing {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
 }
