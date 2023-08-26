@@ -1,7 +1,7 @@
 import "../blocks/SideBar.css";
 import avatar from "../images/avatar.svg";
 
-function Sidebar() {
+function SideBar() {
   return (
     <div className="sidebar">
       <div className="sidebar__info">
@@ -12,4 +12,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default SideBar;
