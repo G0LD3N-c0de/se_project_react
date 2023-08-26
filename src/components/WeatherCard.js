@@ -1,8 +1,8 @@
-import "../blocks/Weather.css";
+import "../blocks/WeatherCard.css";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 
-function Weather({ weatherCondition = "", weatherTemp }) {
+function WeatherCard({ weatherCondition = "", weatherTemp }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
@@ -20,4 +20,4 @@ function Weather({ weatherCondition = "", weatherTemp }) {
   );
 }
 
-export default Weather;
+export default WeatherCard;

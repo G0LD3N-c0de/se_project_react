@@ -1,11 +1,11 @@
 import "../blocks/Profile.css";
-import Sidebar from "./Sidebar";
+import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 
 function Profile({ onSelectCard, clothingItems, handleCreateModal }) {
   return (
     <section className="profile">
-      <Sidebar />
+      <SideBar />
       <div className="profile__items">
         <div className="profile__items-header">
           <p className="profile__items-title">Your items</p>
