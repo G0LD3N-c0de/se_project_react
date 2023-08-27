@@ -1,5 +1,4 @@
-const baseUrl =
-  "https://my-json-server.typicode.com/G0LD3N-c0de/se_project_react ";
+import { baseUrl } from "./constants";
 
 export function getClothingItems() {
   return fetch(`${baseUrl}/items`).then(processServerResponse);
@@ -28,6 +27,6 @@ export function deleteClothingItem(cardId) {
   }).then(processServerResponse);
 }
 
-function processServerResponse(res) {
+export function processServerResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
