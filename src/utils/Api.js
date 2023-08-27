@@ -1,9 +1,8 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  "https://my-json-server.typicode.com/G0LD3N-c0de/se_project_react ";
 
 export function getClothingItems() {
-  return fetch(`${baseUrl}/items`).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  return fetch(`${baseUrl}/items`).then(processServerResponse);
 }
 
 export function addClothingItem(data) {
@@ -17,9 +16,7 @@ export function addClothingItem(data) {
       weather: data.weather,
       imageUrl: data.imageUrl,
     }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(processServerResponse);
 }
 
 export function deleteClothingItem(cardId) {
@@ -28,7 +25,9 @@ export function deleteClothingItem(cardId) {
     headers: {
       "content-type": "application/json",
     },
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(processServerResponse);
+}
+
+function processServerResponse(res) {
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }

@@ -7,15 +7,13 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitCon
 function Main({ weatherTemp, onSelectCard, weatherCondition, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
-  const weatherType = useMemo(() => {
-    if (currentTemperatureUnit === "F") {
-      if (weatherTemp >= 86) {
-        return "hot";
-      } else if (weatherTemp >= 66 && weatherTemp <= 85) {
-        return "warm";
-      } else if (weatherTemp <= 65) {
-        return "cold";
-      }
+  const getWeatherType = () => {
+    if (weatherTemp >= 86) {
+      return "hot";
+    } else if (weatherTemp >= 66 && weatherTemp <= 85) {
+      return "warm";
+    } else if (weatherTemp <= 65) {
+      return "cold";
     } else {
       if (weatherTemp >= 30) {
         return "hot";
@@ -25,7 +23,9 @@ function Main({ weatherTemp, onSelectCard, weatherCondition, clothingItems }) {
         return "cold";
       }
     }
-  }, [weatherTemp]);
+  };
+
+  const weatherType = getWeatherType();
 
   const filteredCards = clothingItems.filter((item) => {
     return item.weather.toLowerCase() === weatherType;

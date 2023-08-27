@@ -32,8 +32,7 @@ function App() {
   // ----- Toggle Switch ----- //
 
   const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
-    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   // -----  Item Handling ----- //
@@ -50,10 +49,10 @@ function App() {
   };
 
   const handleDeleteItem = () => {
-    deleteClothingItem(selectedCard._id)
+    deleteClothingItem(selectedCard.id)
       .then(() => {
         const updatedItems = clothingItems.filter(
-          (item) => item._id !== selectedCard._id
+          (item) => item.id !== selectedCard.id
         );
         setClothingItems(updatedItems);
         setSelectedCard({});
@@ -85,10 +84,10 @@ function App() {
       isDay = false;
     }
 
-    const imageSelector = weatherOptions.filter((option) => {
+    const imageSelector = weatherOptions.find((option) => {
       return option.type === data.weather[0].main && option.day === isDay;
     });
-    const imageUrl = imageSelector[0].url;
+    const imageUrl = imageSelector.url;
     return imageUrl;
   };
 
