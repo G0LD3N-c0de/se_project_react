@@ -49,10 +49,10 @@ function App() {
   };
 
   const handleDeleteItem = () => {
-    deleteClothingItem(selectedCard.id)
+    deleteClothingItem(selectedCard._id)
       .then(() => {
         const updatedItems = clothingItems.filter(
-          (item) => item.id !== selectedCard.id
+          (item) => item._id !== selectedCard._id
         );
         setClothingItems(updatedItems);
         setSelectedCard({});
