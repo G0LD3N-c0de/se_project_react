@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
 import AddItemModal from "./AddItemModal";
+import LoginModal from "./LoginModal";
 import ItemModal from "./ItemModal";
 import Profile from "./Profile";
 import {
@@ -69,6 +70,10 @@ function App() {
   const handleselectedCard = (card) => {
     setSelectedCard(card);
     setActiveModal("preview");
+  };
+
+  const handleLoginModal = () => {
+    setActiveModal("login");
   };
 
   const handleCloseModal = () => {
@@ -149,6 +154,7 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <Header onCreateModal={handleCreateModal} cityName={city} />
+        <LoginModal handleClose={handleCloseModal} />
 
         <Switch>
           <Route exact path="/profile">
@@ -177,6 +183,9 @@ function App() {
             selectedCard={selectedCard}
             handleDeleteItem={handleDeleteItem}
           />
+        )}
+        {activeModal === "login" && (
+          <LoginModal handleClose={handleCloseModal} />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>

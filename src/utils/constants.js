@@ -19,7 +19,6 @@ export const weatherOptions = [
     url: require("../images/weather/day/rain.svg").default,
     day: true,
     type: "Rain",
-    type: "Drizzle",
   },
   {
     url: require("../images/weather/day/sunny.svg").default,
@@ -51,7 +50,6 @@ export const weatherOptions = [
     url: require("../images/weather/night/rain.svg").default,
     day: false,
     type: "Rain",
-    type: "Drizzle",
   },
   {
     url: require("../images/weather/night/snow.svg").default,
@@ -66,7 +64,7 @@ export const weatherOptions = [
 ];
 
 export const APIkey = "f69e43c1e4133c1dfb285207c79191e4";
-export const latitude = "30.2672";
-export const longitude = "-97.7431";
+export const latitude = "30.2666";
+export const longitude = "-97.7333";
 
 export const baseUrl = "http://localhost:3001";
