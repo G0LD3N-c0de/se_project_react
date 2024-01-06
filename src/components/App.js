@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Main from "./Main";
 import AddItemModal from "./AddItemModal";
 import LoginModal from "./LoginModal";
+import RegisterModal from "./RegisterModal";
 import ItemModal from "./ItemModal";
 import Profile from "./Profile";
 import {
@@ -154,7 +155,6 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <Header onCreateModal={handleCreateModal} cityName={city} />
-        <LoginModal handleClose={handleCloseModal} />
 
         <Switch>
           <Route exact path="/profile">
@@ -186,6 +186,9 @@ function App() {
         )}
         {activeModal === "login" && (
           <LoginModal handleClose={handleCloseModal} />
+        )}
+        {activeModal === "register" && (
+          <RegisterModal handleClose={handleCloseModal} />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
