@@ -21,6 +21,7 @@ import {
   addClothingItem,
   deleteClothingItem,
 } from "../utils/Api";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -157,13 +158,13 @@ function App() {
         <Header onCreateModal={handleCreateModal} cityName={city} />
 
         <Switch>
-          <Route exact path="/profile">
+          <ProtectedRoute exact path="/profile">
             <Profile
               onSelectCard={handleselectedCard}
               clothingItems={clothingItems}
               handleCreateModal={handleCreateModal}
             />
-          </Route>
+          </ProtectedRoute>
           <Route path="/">
             <Main
               weatherTemp={temp[currentTemperatureUnit]}
