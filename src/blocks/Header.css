@@ -33,7 +33,7 @@
   transition: 0.5s;
 }
 
-.header__add-button {
+.header__button {
   border: none;
   background-color: #fff;
   font-family: "Cabinet Grotesk Medium";
@@ -42,7 +42,7 @@
   padding: 0;
 }
 
-.header__add-button:hover {
+.header__button:hover {
   cursor: pointer;
 }
 
@@ -52,6 +52,12 @@
   transition: 0.5s;
   text-decoration: none;
   color: #000;
+}
+
+.header__profile-picture {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
 
 @media screen and (max-width: 590px) {

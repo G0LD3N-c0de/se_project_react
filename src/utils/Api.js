@@ -32,3 +32,19 @@ export function deleteClothingItem(cardId, token) {
 export function processServerResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
+
+// USERS
+
+export function editProfileData(data, token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name: data.name,
+      avatar: data.avatar,
+    }),
+  }).then(processServerResponse);
+}

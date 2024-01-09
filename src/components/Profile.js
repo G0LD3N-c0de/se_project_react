@@ -2,10 +2,15 @@ import "../blocks/Profile.css";
 import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 
-function Profile({ onSelectCard, clothingItems, handleCreateModal }) {
+function Profile({
+  onSelectCard,
+  clothingItems,
+  handleCreateModal,
+  handleEditProfileModal,
+}) {
   return (
     <section className="profile">
-      <SideBar />
+      <SideBar handleEditProfileModal={handleEditProfileModal} />
       <div className="profile__items">
         <div className="profile__items-header">
           <p className="profile__items-title">Your items</p>

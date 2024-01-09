@@ -21,11 +21,19 @@
   padding: 20px 32px 32px 32px;
 }
 
-.item-modal__delete-item {
+.item-modal__delete-button {
   border: none;
   background: none;
   padding: 0;
   color: red;
+}
+
+.item-modal__delete-button_visible {
+  visibility: visible;
+}
+
+.item-modal__delete-button_hidden {
+  visibility: hidden;
 }
 
 .item-modal__delete-item:hover {
