@@ -4,11 +4,12 @@ export function getClothingItems() {
   return fetch(`${baseUrl}/items`).then(processServerResponse);
 }
 
-export function addClothingItem(data) {
+export function addClothingItem(data, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name: data.name,
@@ -18,11 +19,12 @@ export function addClothingItem(data) {
   }).then(processServerResponse);
 }
 
-export function deleteClothingItem(cardId) {
+export function deleteClothingItem(cardId, token) {
   return fetch(`${baseUrl}/items/` + cardId, {
     method: "DELETE",
     headers: {
       "content-type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   }).then(processServerResponse);
 }

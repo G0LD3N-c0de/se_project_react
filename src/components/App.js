@@ -5,6 +5,8 @@ import Main from "./Main";
 import AddItemModal from "./AddItemModal";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
+import { signUp, signIn } from "../utils/auth";
+import { checkToken } from "../utils/auth";
 import ItemModal from "./ItemModal";
 import Profile from "./Profile";
 import {
@@ -24,13 +26,15 @@ import {
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
-  const [activeModal, setActiveModal] = useState("");
+  const [activeModal, setActiveModal] = useState("register");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [city, setCity] = useState("");
   const [weatherCondition, setWeatherCondition] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [loggedInState, setLoggedInState] = useState(false);
+  const [token, setToken] = useState("");
 
   // ----- Toggle Switch ----- //
 
@@ -38,10 +42,36 @@ function App() {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
+  // ----- User Registration ----- //
+
+  const registerUser = (data) => {
+    signUp(data)
+      .then((res) => {
+        handleCloseModal();
+        signIn(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  // ----- User SignIn ----- //
+
+  const signInUser = (data) => {
+    signIn(data)
+      .then((res) => {
+        handleCloseModal();
+        localStorage.setItem("jwt", res.token);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   // -----  Item Handling ----- //
 
   const onAddItem = (item) => {
-    addClothingItem(item)
+    addClothingItem(item, token)
       .then((res) => {
         setClothingItems([...clothingItems, res]);
         handleCloseModal();
@@ -52,7 +82,7 @@ function App() {
   };
 
   const handleDeleteItem = () => {
-    deleteClothingItem(selectedCard._id)
+    deleteClothingItem(selectedCard._id, token)
       .then(() => {
         const updatedItems = clothingItems.filter(
           (item) => item._id !== selectedCard._id
@@ -99,6 +129,14 @@ function App() {
   };
 
   // ----- BEGIN USE EFFECTS ----- //
+
+  // Check for token
+  useEffect(() => {
+    if (localStorage.getItem("jwt")) {
+      const jwt = localStorage.getItem("jwt");
+      checkToken(jwt);
+    }
+  });
 
   // Retrieve clothing items
   useEffect(() => {
@@ -185,11 +223,14 @@ function App() {
             handleDeleteItem={handleDeleteItem}
           />
         )}
-        {activeModal === "login" && (
-          <LoginModal handleClose={handleCloseModal} />
+        {activeModal === "signIn" && (
+          <LoginModal handleClose={handleCloseModal} signInUser={signInUser} />
         )}
         {activeModal === "register" && (
-          <RegisterModal handleClose={handleCloseModal} />
+          <RegisterModal
+            handleClose={handleCloseModal}
+            registerUser={registerUser}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>

@@ -28,3 +28,13 @@ export function signIn(data) {
     }),
   }).then(processServerResponse);
 }
+
+export function checkToken(token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(processServerResponse);
+}
