@@ -8,6 +8,7 @@ function Profile({
   handleCreateModal,
   handleEditProfileModal,
   signOut,
+  isLoggedIn,
 }) {
   return (
     <section className="profile">
@@ -25,6 +26,7 @@ function Profile({
         <ClothesSection
           onSelectCard={onSelectCard}
           clothingItems={clothingItems}
+          isLoggedIn={isLoggedIn}
         />
       </div>
     </section>

@@ -4,16 +4,24 @@ import "../blocks/Main.css";
 import { useMemo, useContext } from "react";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 
-function Main({ weatherTemp, onSelectCard, weatherCondition, clothingItems }) {
+function Main({
+  weatherTemp,
+  onSelectCard,
+  weatherCondition,
+  clothingItems,
+  isLoggedIn,
+}) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   const getWeatherType = () => {
-    if (weatherTemp >= 86) {
-      return "hot";
-    } else if (weatherTemp >= 66 && weatherTemp <= 85) {
-      return "warm";
-    } else if (weatherTemp <= 65) {
-      return "cold";
+    if (currentTemperatureUnit === "F") {
+      if (weatherTemp >= 86) {
+        return "hot";
+      } else if (weatherTemp >= 66 && weatherTemp <= 85) {
+        return "warm";
+      } else if (weatherTemp <= 65) {
+        return "cold";
+      }
     } else {
       if (weatherTemp >= 30) {
         return "hot";
@@ -49,6 +57,7 @@ function Main({ weatherTemp, onSelectCard, weatherCondition, clothingItems }) {
                 card={card}
                 key={card._id}
                 onSelectCard={onSelectCard}
+                isLoggedIn={isLoggedIn}
               />
             );
           })}

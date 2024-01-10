@@ -25,11 +25,26 @@
   margin-right: 9px;
 }
 
-.card__heart .card__image {
+.card__image {
   max-width: 100%;
   max-height: 100%;
 }
 
+.card__heart {
+  width: 21px;
+  height: 19px;
+  transition: opacity 0.1s;
+}
+
 .card__heart:hover {
+  opacity: 0.5;
   cursor: pointer;
+}
+
+.card__heart_visible {
+  visibility: visible;
+}
+
+.card__heart_hidden {
+  visibility: hidden;
 }

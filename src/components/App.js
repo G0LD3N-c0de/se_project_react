@@ -53,14 +53,26 @@ function App() {
 
   // ----- User Registration ----- //
 
-  const registerUser = (data) => {
-    signUp(data)
-      .then((res) => {
-        handleCloseModal();
-      })
-      .catch((err) => {
-        console.error(err);
+  const registerUser = async (data) => {
+    try {
+      const signUpResponse = await signUp(data);
+      console.log(signUpResponse);
+
+      const signInResponse = await signIn(data);
+      handleCloseModal();
+      localStorage.setItem("jwt", signInResponse.token);
+      setIsLoggedIn(true);
+
+      const checkTokenResponse = await checkToken(signInResponse.token);
+      setCurrentUser({
+        _id: checkTokenResponse._id,
+        name: checkTokenResponse.name,
+        avatar: checkTokenResponse.avatar,
+        email: checkTokenResponse.email,
       });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   // ----- User SignIn & SignOut ----- //
@@ -104,6 +116,7 @@ function App() {
         name: res.name,
         avatar: res.avatar,
       });
+      handleCloseModal();
     });
   };
 
@@ -271,6 +284,7 @@ function App() {
                 handleCreateModal={handleCreateModal}
                 handleEditProfileModal={handleEditProfileModal}
                 signOut={signOut}
+                isLoggedIn={isLoggedIn}
               />
             </ProtectedRoute>
             <Route path="/">
@@ -279,6 +293,7 @@ function App() {
                 onSelectCard={handleselectedCard}
                 weatherCondition={weatherCondition}
                 clothingItems={clothingItems}
+                isLoggedIn={isLoggedIn}
               />
             </Route>
           </Switch>
