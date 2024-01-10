@@ -57,14 +57,13 @@ function App() {
     signUp(data)
       .then((res) => {
         handleCloseModal();
-        signIn(res);
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-  // ----- User SignIn ----- //
+  // ----- User SignIn & SignOut ----- //
 
   const signInUser = (data) => {
     signIn(data)
@@ -72,10 +71,29 @@ function App() {
         handleCloseModal();
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
+        checkToken(res.token).then((res) => {
+          setCurrentUser({
+            _id: res._id,
+            name: res.name,
+            avatar: res.avatar,
+            email: res.email,
+          });
+        });
       })
       .catch((err) => {
         console.error(err);
       });
+  };
+
+  const signOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser({
+      _id: "",
+      name: "",
+      avatar: "",
+      email: "",
+    });
   };
 
   // ----- Edit Profile ----- //
@@ -92,6 +110,7 @@ function App() {
   // -----  Item Handling ----- //
 
   const onAddItem = (item) => {
+    console.log(token);
     addClothingItem(item, token)
       .then((res) => {
         setClothingItems([...clothingItems, res]);
@@ -251,6 +270,7 @@ function App() {
                 clothingItems={clothingItems}
                 handleCreateModal={handleCreateModal}
                 handleEditProfileModal={handleEditProfileModal}
+                signOut={signOut}
               />
             </ProtectedRoute>
             <Route path="/">

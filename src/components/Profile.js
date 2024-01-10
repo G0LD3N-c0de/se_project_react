@@ -7,10 +7,14 @@ function Profile({
   clothingItems,
   handleCreateModal,
   handleEditProfileModal,
+  signOut,
 }) {
   return (
     <section className="profile">
-      <SideBar handleEditProfileModal={handleEditProfileModal} />
+      <SideBar
+        handleEditProfileModal={handleEditProfileModal}
+        signOut={signOut}
+      />
       <div className="profile__items">
         <div className="profile__items-header">
           <p className="profile__items-title">Your items</p>
