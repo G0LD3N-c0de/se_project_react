@@ -9,6 +9,7 @@ function Profile({
   handleEditProfileModal,
   signOut,
   isLoggedIn,
+  handleCardLike,
 }) {
   return (
     <section className="profile">
@@ -27,6 +28,7 @@ function Profile({
           onSelectCard={onSelectCard}
           clothingItems={clothingItems}
           isLoggedIn={isLoggedIn}
+          handleCardLike={handleCardLike}
         />
       </div>
     </section>

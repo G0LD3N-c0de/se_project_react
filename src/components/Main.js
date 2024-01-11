@@ -10,6 +10,7 @@ function Main({
   weatherCondition,
   clothingItems,
   isLoggedIn,
+  handleCardLike,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
@@ -58,6 +59,7 @@ function Main({
                 key={card._id}
                 onSelectCard={onSelectCard}
                 isLoggedIn={isLoggedIn}
+                handleCardLike={handleCardLike}
               />
             );
           })}

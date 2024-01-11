@@ -29,6 +29,26 @@ export function deleteClothingItem(cardId, token) {
   }).then(processServerResponse);
 }
 
+export function likeClothingItem(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(processServerResponse);
+}
+
+export function unlikeClothingItem(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(processServerResponse);
+}
+
 export function processServerResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }

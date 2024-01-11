@@ -27,6 +27,7 @@ import {
   editProfileData,
 } from "../utils/Api";
 import ProtectedRoute from "./ProtectedRoute";
+import { likeClothingItem, unlikeClothingItem } from "../utils/Api";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -123,7 +124,6 @@ function App() {
   // -----  Item Handling ----- //
 
   const onAddItem = (item) => {
-    console.log(token);
     addClothingItem(item, token)
       .then((res) => {
         setClothingItems([...clothingItems, res]);
@@ -147,6 +147,29 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
+  };
+
+  const handleCardLike = ({ id, isLiked }) => {
+    // Check if this card is now liked
+    if (!isLiked) {
+      likeClothingItem(id, token)
+        .then((updatedCard) => {
+          console.log(updatedCard);
+          setClothingItems((cards) =>
+            cards.map((c) => (c._id === id ? updatedCard : c))
+          );
+        })
+        .catch((err) => console.log(err));
+    } else {
+      unlikeClothingItem(id, token)
+        .then((updatedCard) => {
+          console.log(updatedCard);
+          setClothingItems((cards) =>
+            cards.map((c) => (c._id === id ? updatedCard : c))
+          );
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const handleCreateModal = () => {
@@ -285,6 +308,7 @@ function App() {
                 handleEditProfileModal={handleEditProfileModal}
                 signOut={signOut}
                 isLoggedIn={isLoggedIn}
+                handleCardLike={handleCardLike}
               />
             </ProtectedRoute>
             <Route path="/">
@@ -294,6 +318,7 @@ function App() {
                 weatherCondition={weatherCondition}
                 clothingItems={clothingItems}
                 isLoggedIn={isLoggedIn}
+                handleCardLike={handleCardLike}
               />
             </Route>
           </Switch>
