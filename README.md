@@ -13,3 +13,7 @@ The idea of the application is pretty simple - we make a call to an API, which t
 ## Technical Skills
 
 React, functional components, CSS & more
+
+## Back-End Repo
+
+https://github.com/G0LD3N-c0de/se_project_express
