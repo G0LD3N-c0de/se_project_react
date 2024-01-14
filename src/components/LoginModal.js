@@ -36,6 +36,7 @@ function LoginModal({ handleClose, signInUser }) {
         placeholder="Email"
         className="modal__input"
         onChange={handleSetEmail}
+        value={email}
         required
       />
       <label className="modal__label" name="password" htmlFor="password">
@@ -50,6 +51,7 @@ function LoginModal({ handleClose, signInUser }) {
         placeholder="Password"
         className="modal__input"
         onChange={handleSetPassword}
+        value={password}
         required
       />
     </ModalWithForm>

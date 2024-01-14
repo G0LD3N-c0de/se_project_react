@@ -40,6 +40,7 @@ function AddItemModal({ isOpen, onAddItem, handleClose }) {
         placeholder="Name"
         className="modal__input"
         onChange={handleSetName}
+        value={name}
         required
       />
       <label className="modal__label" htmlFor="link">
@@ -53,6 +54,7 @@ function AddItemModal({ isOpen, onAddItem, handleClose }) {
         placeholder="Image URL"
         className="modal__input"
         onChange={handleSetImageUrl}
+        value={imageUrl}
         required
       />
       <p>Select the weather type:</p>

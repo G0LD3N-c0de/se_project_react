@@ -43,6 +43,7 @@ function RegisterModal({ handleClose, registerUser }) {
         placeholder="Email"
         className="modal__input"
         onChange={handleSetEmail}
+        value={email}
         required
       />
       <label className="modal__label" name="password" htmlFor="password">
@@ -57,6 +58,7 @@ function RegisterModal({ handleClose, registerUser }) {
         placeholder="Password"
         className="modal__input"
         onChange={handleSetPassword}
+        value={password}
         required
       />
       <label className="modal__label" name="name" htmlFor="name">
@@ -71,6 +73,7 @@ function RegisterModal({ handleClose, registerUser }) {
         placeholder="Name"
         className="modal__input"
         onChange={handleSetName}
+        value={name}
         required
       />
       <label className="modal__label" name="avatar" id="avatar">
@@ -85,6 +88,7 @@ function RegisterModal({ handleClose, registerUser }) {
         placeholder="Avatar URL"
         className="modal__input"
         onChange={handleSetAvatar}
+        value={avatar}
         required
       />
     </ModalWithForm>

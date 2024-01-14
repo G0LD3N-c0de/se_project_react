@@ -112,13 +112,17 @@ function App() {
   // ----- Edit Profile ----- //
 
   const editProfile = (data) => {
-    editProfileData(data, token).then((res) => {
-      setCurrentUser({
-        name: res.name,
-        avatar: res.avatar,
+    editProfileData(data, token)
+      .then((res) => {
+        setCurrentUser({
+          name: res.name,
+          avatar: res.avatar,
+        });
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.error(err);
       });
-      handleCloseModal();
-    });
   };
 
   // -----  Item Handling ----- //

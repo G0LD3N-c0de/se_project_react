@@ -36,6 +36,7 @@ function EditProfileModal({ handleClose, editProfile }) {
         placeholder="Name"
         className="modal__input"
         onChange={handleSetName}
+        value={name}
         required
       />
       <label className="modal__label" name="avatar" htmlFor="avatar">
@@ -49,6 +50,7 @@ function EditProfileModal({ handleClose, editProfile }) {
         placeholder="Avatar URL"
         className="modal__input"
         onChange={handleSetAvatar}
+        value={avatar}
         required
       />
     </ModalWithForm>
