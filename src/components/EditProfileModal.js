@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ModalWithForm from "./ModalWithForm";
 
-function EditProfileModal({ handleClose, editProfile }) {
+function EditProfileModal({ handleClose, editProfile, isLoading }) {
   const [name, setName] = useState("");
   const handleSetName = (e) => {
     setName(e.target.value);
@@ -20,7 +20,7 @@ function EditProfileModal({ handleClose, editProfile }) {
     <ModalWithForm
       title={"Change profile data"}
       name={"editProfile"}
-      buttonText={"Save changes"}
+      buttonText={isLoading ? "Saving..." : "Save changes"}
       onClose={handleClose}
       handleSubmit={handleSubmit}
     >

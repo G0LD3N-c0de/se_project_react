@@ -45,6 +45,7 @@ function App() {
     email: "",
   });
   const [token, setToken] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   // ----- Toggle Switch ----- //
 
@@ -55,12 +56,13 @@ function App() {
   // ----- User Registration ----- //
 
   const registerUser = async (data) => {
+    setIsLoading(true);
     try {
       const signUpResponse = await signUp(data);
       console.log(signUpResponse);
 
       const signInResponse = await signIn(data);
-      handleCloseModal();
+
       localStorage.setItem("jwt", signInResponse.token);
       setIsLoggedIn(true);
 
@@ -71,6 +73,8 @@ function App() {
         avatar: checkTokenResponse.avatar,
         email: checkTokenResponse.email,
       });
+      handleCloseModal();
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -79,6 +83,7 @@ function App() {
   // ----- User SignIn & SignOut ----- //
 
   const signInUser = (data) => {
+    setIsLoading(true);
     signIn(data)
       .then((res) => {
         handleCloseModal();
@@ -92,6 +97,9 @@ function App() {
             email: res.email,
           });
         });
+      })
+      .finally(() => {
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error(err);
@@ -112,6 +120,7 @@ function App() {
   // ----- Edit Profile ----- //
 
   const editProfile = (data) => {
+    setIsLoading(true);
     editProfileData(data, token)
       .then((res) => {
         setCurrentUser({
@@ -119,6 +128,9 @@ function App() {
           avatar: res.avatar,
         });
         handleCloseModal();
+      })
+      .finally(() => {
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error(err);
@@ -128,10 +140,14 @@ function App() {
   // -----  Item Handling ----- //
 
   const onAddItem = (item) => {
+    setIsLoading(true);
     addClothingItem(item, token)
       .then((res) => {
         setClothingItems([...clothingItems, res]);
         handleCloseModal();
+      })
+      .finally(() => {
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error(err);
@@ -331,6 +347,7 @@ function App() {
             <AddItemModal
               handleClose={handleCloseModal}
               onAddItem={onAddItem}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "preview" && (
@@ -344,18 +361,21 @@ function App() {
             <LoginModal
               handleClose={handleCloseModal}
               signInUser={signInUser}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "register" && (
             <RegisterModal
               handleClose={handleCloseModal}
               registerUser={registerUser}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "editProfile" && (
             <EditProfileModal
               handleClose={handleCloseModal}
               editProfile={editProfile}
+              isLoading={isLoading}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>

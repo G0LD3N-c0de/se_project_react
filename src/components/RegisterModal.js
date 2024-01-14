@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalWithForm from "./ModalWithForm";
 
-function RegisterModal({ handleClose, registerUser }) {
+function RegisterModal({ handleClose, registerUser, isLoading }) {
   const [email, setEmail] = useState("");
   const handleSetEmail = (e) => {
     setEmail(e.target.value);
@@ -28,7 +28,7 @@ function RegisterModal({ handleClose, registerUser }) {
     <ModalWithForm
       title={"Sign up"}
       name={"register"}
-      buttonText={"Next"}
+      buttonText={isLoading ? "Saving..." : "Next"}
       onClose={handleClose}
       handleSubmit={handleSubmit}
     >
