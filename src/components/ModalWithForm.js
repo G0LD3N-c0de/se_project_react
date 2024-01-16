@@ -7,6 +7,8 @@ function ModalWithForm({
   onClose,
   title,
   handleSubmit,
+  redirect,
+  redirectText,
 }) {
   return (
     <div className={`modal modal_type_${name}`}>
@@ -18,6 +20,15 @@ function ModalWithForm({
           <button className="modal__submit" type="submit">
             {buttonText}
           </button>
+          {redirect ? (
+            <button
+              className="modal__redirect"
+              type="button"
+              onClick={redirect}
+            >
+              {redirectText}
+            </button>
+          ) : null}
         </form>
       </div>
     </div>

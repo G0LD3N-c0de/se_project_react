@@ -57,9 +57,11 @@ function AddItemModal({ onAddItem, handleClose, isLoading }) {
         value={imageUrl}
         required
       />
-      <p>Select the weather type:</p>
+      <label className="modal__label modal__label_radio">
+        Select the weather type:
+      </label>
       <div className="modal__radio-buttons">
-        <div>
+        <div className="modal__radio-container">
           <input
             className="modal__radio-button"
             type="radio"
@@ -73,7 +75,7 @@ function AddItemModal({ onAddItem, handleClose, isLoading }) {
             Hot
           </label>
         </div>
-        <div>
+        <div className="modal__radio-container">
           <input
             className="modal__radio-button"
             type="radio"
@@ -87,7 +89,7 @@ function AddItemModal({ onAddItem, handleClose, isLoading }) {
             Warm
           </label>
         </div>
-        <div>
+        <div className="modal__radio-container">
           <input
             className="modal__radio-button"
             type="radio"

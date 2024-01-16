@@ -28,6 +28,10 @@
   color: red;
 }
 
+.item-modal__delete-button:hover {
+  cursor: pointer;
+}
+
 .item-modal__delete-button_visible {
   visibility: visible;
 }

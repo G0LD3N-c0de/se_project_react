@@ -42,17 +42,30 @@
 }
 
 .modal__submit {
-  margin-top: 34px;
   background-color: #000000;
   color: #fff;
   border: none;
   border-radius: 4px;
   padding: 8px 16px 8px 16px;
+  display: inline;
 }
 
 .modal__submit:hover {
   background-color: #00000099;
   cursor: pointer;
+}
+
+.modal__redirect {
+  display: inline;
+  background-color: transparent;
+  border: none;
+  margin-left: 12px;
+  opacity: 0.5;
+}
+
+.modal__redirect:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 
 .modal__children {
@@ -64,6 +77,14 @@
   margin-bottom: 5px;
 }
 
+.modal__label_radio {
+  margin-bottom: 12px;
+}
+
+.modal__form {
+  position: relative;
+}
+
 .modal__input {
   border: none;
   padding-bottom: 4px;
@@ -71,8 +92,19 @@
   margin-bottom: 24px;
 }
 
-.modal__radio-button {
+.modal__input:last-of-type {
+  margin-bottom: 34px;
+}
+
+.modal__radio-container {
   margin-bottom: 8px;
+}
+
+.modal__radio-container:last-of-type {
+  margin-bottom: 32px;
+}
+
+.modal__radio-button {
   margin-right: 11px;
   color: #00000080;
 }

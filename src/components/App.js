@@ -86,8 +86,8 @@ function App() {
     setIsLoading(true);
     signIn(data)
       .then((res) => {
-        handleCloseModal();
         localStorage.setItem("jwt", res.token);
+        setToken(res.token);
         setIsLoggedIn(true);
         checkToken(res.token).then((res) => {
           setCurrentUser({
@@ -99,6 +99,7 @@ function App() {
         });
       })
       .finally(() => {
+        handleCloseModal();
         setIsLoading(false);
       })
       .catch((err) => {
@@ -124,16 +125,18 @@ function App() {
     editProfileData(data, token)
       .then((res) => {
         setCurrentUser({
+          _id: res._id,
           name: res.name,
           avatar: res.avatar,
+          email: res.email,
         });
-        handleCloseModal();
-      })
-      .finally(() => {
-        setIsLoading(false);
       })
       .catch((err) => {
         console.error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        handleCloseModal();
       });
   };
 
@@ -144,13 +147,13 @@ function App() {
     addClothingItem(item, token)
       .then((res) => {
         setClothingItems([...clothingItems, res]);
-        handleCloseModal();
-      })
-      .finally(() => {
-        setIsLoading(false);
       })
       .catch((err) => {
         console.error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        handleCloseModal();
       });
   };
 
@@ -362,6 +365,7 @@ function App() {
               handleClose={handleCloseModal}
               signInUser={signInUser}
               isLoading={isLoading}
+              redirect={handleRegisterModal}
             />
           )}
           {activeModal === "register" && (
@@ -369,6 +373,7 @@ function App() {
               handleClose={handleCloseModal}
               registerUser={registerUser}
               isLoading={isLoading}
+              redirect={handleLoginModal}
             />
           )}
           {activeModal === "editProfile" && (

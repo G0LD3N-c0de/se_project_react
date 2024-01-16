@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalWithForm from "./ModalWithForm";
 
-function LoginModal({ handleClose, signInUser, isLoading }) {
+function LoginModal({ handleClose, signInUser, isLoading, redirect }) {
   const [email, setEmail] = useState("");
   const handleSetEmail = (e) => {
     setEmail(e.target.value);
@@ -23,6 +23,8 @@ function LoginModal({ handleClose, signInUser, isLoading }) {
       buttonText={isLoading ? "Logging in..." : "Log in"}
       onClose={handleClose}
       handleSubmit={handleSubmit}
+      redirect={redirect}
+      redirectText={"or Register"}
     >
       <label className="modal__label" name="email" htmlFor="email">
         Email
