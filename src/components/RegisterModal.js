@@ -78,7 +78,7 @@ function RegisterModal({ handleClose, registerUser, isLoading, redirect }) {
         value={name}
         required
       />
-      <label className="modal__label" name="avatar" id="avatar">
+      <label className="modal__label" name="avatar" htmlFor="avatar">
         Avatar URL
       </label>
       <input

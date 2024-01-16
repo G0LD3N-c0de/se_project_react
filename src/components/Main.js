@@ -40,6 +40,8 @@ function Main({
     return item.weather.toLowerCase() === weatherType;
   });
 
+  const mostRecentFilteredCards = filteredCards.reverse();
+
   return (
     <main className="main">
       <WeatherCard
@@ -52,7 +54,7 @@ function Main({
           {currentTemperatureUnit === "F" ? "°F" : "°C"} / You may want to wear:
         </div>
         <div className="cards__wrapper">
-          {filteredCards.map((card) => {
+          {mostRecentFilteredCards.map((card) => {
             return (
               <ItemCard
                 card={card}
