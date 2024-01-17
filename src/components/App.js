@@ -97,13 +97,13 @@ function App() {
             email: res.email,
           });
         });
-      })
-      .finally(() => {
         handleCloseModal();
-        setIsLoading(false);
       })
       .catch((err) => {
         console.error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -130,13 +130,13 @@ function App() {
           avatar: res.avatar,
           email: res.email,
         });
+        handleCloseModal();
       })
       .catch((err) => {
         console.error(err);
       })
       .finally(() => {
         setIsLoading(false);
-        handleCloseModal();
       });
   };
 
@@ -147,13 +147,13 @@ function App() {
     addClothingItem(item, token)
       .then((res) => {
         setClothingItems([...clothingItems, res]);
+        handleCloseModal();
       })
       .catch((err) => {
         console.error(err);
       })
       .finally(() => {
         setIsLoading(false);
-        handleCloseModal();
       });
   };
 
