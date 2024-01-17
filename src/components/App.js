@@ -86,6 +86,7 @@ function App() {
     setIsLoading(true);
     signIn(data)
       .then((res) => {
+        console.log(res.message);
         localStorage.setItem("jwt", res.token);
         setToken(res.token);
         setIsLoggedIn(true);
@@ -101,6 +102,9 @@ function App() {
       })
       .catch((err) => {
         console.error(err);
+        if (err === "Error: 401") {
+          window.alert("Invalid email or password");
+        }
       })
       .finally(() => {
         setIsLoading(false);
