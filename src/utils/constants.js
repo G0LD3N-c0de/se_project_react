@@ -67,4 +67,7 @@ export const APIkey = "f69e43c1e4133c1dfb285207c79191e4";
 export const latitude = "30.2666";
 export const longitude = "-97.7333";
 
-export const baseUrl = "http://localhost:3001";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "put the URL for your deployed backend here, including https://"
+    : "http://localhost:3001";
