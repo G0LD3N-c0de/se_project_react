@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run build && scp -r -i ~/.ssh/id_ed25519 ./build/* nicokazemi34@StyleCast.twilightparadox.com:~/frontend"
   },
   "eslintConfig": {
     "extends": [
