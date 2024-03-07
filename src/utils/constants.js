@@ -69,5 +69,5 @@ export const longitude = "-97.7333";
 
 export const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "put the URL for your deployed backend here, including https://"
+    ? "https://StyleCast.twilightparadox.com"
     : "http://localhost:3001";
