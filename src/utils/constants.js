@@ -69,5 +69,5 @@ export const longitude = "-97.7333";
 
 export const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://StyleCast.twilightparadox.com"
+    ? "https://api.StyleCast.twilightparadox.com"
     : "http://localhost:3001";
