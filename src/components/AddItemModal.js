@@ -66,12 +66,12 @@ function AddItemModal({ onAddItem, handleClose, isLoading }) {
             className="modal__radio-button"
             type="radio"
             name="weatherType"
-            value="Hot"
-            id="Hot"
+            value="hot"
+            id="hot"
             onChange={handleSetWeather}
             required
           ></input>
-          <label htmlFor="Hot" className="modal__radio-label">
+          <label htmlFor="hot" className="modal__radio-label">
             Hot
           </label>
         </div>
@@ -80,12 +80,12 @@ function AddItemModal({ onAddItem, handleClose, isLoading }) {
             className="modal__radio-button"
             type="radio"
             name="weatherType"
-            value="Warm"
-            id="Warm"
+            value="warm"
+            id="warm"
             onChange={handleSetWeather}
             required
           ></input>
-          <label htmlFor="Warm" className="modal__radio-label">
+          <label htmlFor="warm" className="modal__radio-label">
             Warm
           </label>
         </div>
@@ -94,12 +94,12 @@ function AddItemModal({ onAddItem, handleClose, isLoading }) {
             className="modal__radio-button"
             type="radio"
             name="weatherType"
-            value="Cold"
-            id="Cold"
+            value="cold"
+            id="cold"
             onChange={handleSetWeather}
             required
           ></input>
-          <label htmlFor="Cold" className="modal__radio-label">
+          <label htmlFor="cold" className="modal__radio-label">
             Cold
           </label>
         </div>
