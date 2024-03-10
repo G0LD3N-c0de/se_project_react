@@ -65,7 +65,7 @@ export const weatherOptions = [
 
 export const APIkey = "f69e43c1e4133c1dfb285207c79191e4";
 export const latitude = "39.7392";
-export const longitude = "104.9903";
+export const longitude = "-104.9903";
 
 export const baseUrl =
   process.env.NODE_ENV === "production"
