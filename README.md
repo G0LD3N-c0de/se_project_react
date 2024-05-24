@@ -17,3 +17,7 @@ React, functional components, CSS & more
 ## Back-End Repo
 
 https://github.com/G0LD3N-c0de/se_project_express
+
+## Improvements
+
+Add feature allowing users to select which region they want to use for the weather app.
